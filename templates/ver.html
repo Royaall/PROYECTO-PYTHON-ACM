@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Sistema de gestión de reservas</h1>
+        <h2 id="titulo">Restaurante Don José</h2>
+    </header>
+
+    <div class="contenedor">
+        {% for r in reservas %}
+            <div class="card">
+                <h3>{{ r.nombre }}</h3>
+                <p><strong>Personas:</strong> {{ r.personas }}</p>
+                <p><strong>Hora:</strong> {{ r.hora }}</p>
+                <p><strong>Mesa:</strong> {{ r.mesa }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('index') }}">
+        <button>Volver al inicio</button>
+    </a>
+</body>
+</html>

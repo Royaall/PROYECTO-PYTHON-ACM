@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+  </head>
+  <body>
+    <header>
+      <h1>Sistema de gestión de reservas:</h1>
+      <h2 id="titulo">Restaurante Don José</h2>
+    </header>
+    <div class="formularios">
+      <form action="{{ url_for('editar') }}" method="POST">
+        <h2>MODIFICADOR DE RESERVAS</h2>
+
+        <label for="id">ID de la reserva: </label>
+        <input type="number" name="id" placeholder="number" required />
+        <button type="submit">Modificar reservas</button>
+      </form>
+
+      {% if reserva %}
+
+      <form method="POST" action="/editar_guardar">
+        <h2>Reserva encontrada</h2>
+        <input type="hidden" name="id" value="{{ reserva.id }}" />
+
+        <input type="text" name="nombre" value="{{ reserva.nombre }}" />
+        <input type="number" name="personas" value="{{ reserva.personas }}" />
+        <button type="submit">Guardar cambios</button>
+      </form>
+      {% endif %} {% if cambio == True %}
+      <p>Se ha modificado exitosamente la reserva.</p>
+
+      
+      {% endif %}
+      <a href="{{ url_for('index') }}">
+        <button>Volver al inicio</button>
+      </a>
+    </div>
+  </body>
+</html>

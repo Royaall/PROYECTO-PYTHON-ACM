@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Sistema de gestión de reservas:</h1>
+      <h2 id="titulo">Restaurante Don José</h2>
+    </header>
+    <div class="formularios">
+      <form action="{{ url_for('crear') }}" method="POST">
+        <h2>DATOS NUEVA RESERVA</h2>
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" placeholder="Nombre" required />
+
+        <label>Número de personas:</label>
+        <input type="number" name="personas" placeholder="N° personas" required />
+
+        <label>Horario:</label>
+        <input type="text" name="hora" placeholder="Ej: 18:00" required />
+
+        <button type="submit">Crear reserva</button>
+      </form>
+
+      {% if cambio == True %}
+        <p>Se ha creado exitosamente la nueva reserva.</p>
+
+      {% endif %}
+
+      <a href="{{ url_for('index') }}">
+        <button>Volver al inicio</button>
+    </a>
+    </div>
+  </body>
+</html>

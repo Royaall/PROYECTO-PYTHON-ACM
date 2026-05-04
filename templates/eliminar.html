@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Sistema de gestión de reservas:</h1>
+        <h2 id="titulo">Restaurante Don José</h2>
+    </header>
+    <div class="formularios">
+        <form action="{{ url_for('eliminar') }}" method="POST">
+            <h2>ELIMINACIÓN DE RESERVAS</h2>
+
+            <label for="id">ID de la reserva</label>
+            <input type="number" name="id" id="" placeholder="EJM: 2" required>
+
+            <button type="submit">Eliminar reserva</button>
+        </form>
+
+        {% if reserva %}
+            <form method="POST" action="/eliminar_guardar">
+                <h2>¿Estás seguro de eliminar la siguiente reserva: ?</h2>
+                <input type="number" name="id" value="{{ reserva.id }}" readonly/>
+
+                <input type="text" name="nombre" value="{{ reserva.nombre }}" disabled />
+                <input type="number" name="personas" value="{{ reserva.personas }}" disabled />
+                <input type="text" name="hora" value="{{ reserva.hora }}" disabled />
+
+                <button type="submit">Eliminar</button>
+            </form>
+        {% endif %}
+
+        {% if cambio == True %}
+        <p>Se ha eliminado exitosamente la reserva.</p>
+
+        
+        {% endif %}
+        <a href="{{ url_for('index') }}">
+          <button>Volver al inicio</button>
+        </a>
+    </div>
+</body>
+</html>
