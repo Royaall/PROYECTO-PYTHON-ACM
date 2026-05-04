@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Sistema de gestión de reservas:</h1>
+        <h2 id="titulo">Restaurante Don José</h2>
+    </header>
+
+    <div id="funciones">
+        <a href="/ver" class="funcion">
+            <section>VER RESERVAS</section>
+        </a>
+
+        <a href="/crear" class="funcion">
+            <section>CREAR RESERVAS</section>
+        </a>
+
+        <a href="/editar" class="funcion">
+            <section>MODIFICAR RESERVAS</section>
+        </a>
+
+        <a href="/eliminar" class="funcion">
+            <section>ELIMINAR RESERVAS</section>
+        </a>
+
+
+    </div>
+</body>
+</html>
